@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caraoke - Web Karaoke</title>
+    <!-- Use Inter for modern UI, Prompt for Thai text -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Prompt:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Animated Background Elements -->
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+    <div class="bg-orb orb-3"></div>
+
+    <div id="app" class="app-layout">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1 class="logo">คารา<span class="text-gradient">โอเกะ</span></h1>
+            </div>
+            
+            <div class="sidebar-menu">
+                <h3 class="menu-title">หมวดหมู่เพลง</h3>
+                <ul class="category-list">
+                    <li><button class="category-btn active" data-category="all">
+                        <span class="cat-icon">🎵</span> ทั้งหมด (All)
+                    </button></li>
+                    <li><button class="category-btn" data-category="pop">
+                        <span class="cat-icon">🎤</span> ป๊อป (Pop)
+                    </button></li>
+                    <li><button class="category-btn" data-category="rock">
+                        <span class="cat-icon">🎸</span> ร็อก (Rock)
+                    </button></li>
+                    <li><button class="category-btn" data-category="hiphop">
+                        <span class="cat-icon">🎧</span> ฮิปฮอป (Hip-Hop)
+                    </button></li>
+                    <li><button class="category-btn" data-category="latin">
+                        <span class="cat-icon">💃</span> ลาติน (Latin)
+                    </button></li>
+                    <li><button class="category-btn" data-category="90s">
+                        <span class="cat-icon">📼</span> ยุค 90s
+                    </button></li>
+                    <li><button class="category-btn" data-category="2000s">
+                        <span class="cat-icon">💿</span> ยุค 2000s
+                    </button></li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <div class="main-content">
+            <!-- View 1: Song List -->
+            <main id="list-view" class="view active">
+                <header class="app-header">
+                    <p class="subtitle">Sing Your Heart Out</p>
+                    <div class="search-container">
+                        <div class="search-box">
+                            <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                            <input type="text" id="search-input" placeholder="ค้นหาชื่อเพลง หรือ ศิลปิน..."
+                                autocomplete="off">
+                        </div>
+                    </div>
+                </header>
+                <section class="song-list-container">
+                    <div class="section-title">
+                        <h2>กำลัง มาแรง</h2>
+                    </div>
+                    <div id="song-grid" class="song-grid">
+                        <!-- Song cards will be generated here by JS -->
+                    </div>
+                </section>
+            </main>
+
+            <!-- View 2: Video Player -->
+            <main id="player-view" class="view hidden">
+                <header class="player-header">
+                    <button id="back-btn" class="btn-back">
+                        <span class="btn-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M19 12H5M12 19l-7-7 7-7" />
+                            </svg>
+                        </span>
+                        <span class="btn-text">กลับไปเลือกเพลง</span>
+                    </button>
+                    <div class="now-playing-info">
+                        <p class="now-playing-label">กำลังเล่น</p>
+                        <h2 id="now-playing-title">ชื่อเพลง</h2>
+                        <p id="now-playing-artist">ศิลปิน</p>
+                    </div>
+                </header>
+                <section class="video-container">
+                    <div class="video-frame-glow"></div>
+                    <div id="video-wrapper">
+                        <!-- YouTube iframe or video tag will be inserted here -->
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
