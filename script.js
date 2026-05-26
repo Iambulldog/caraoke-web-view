@@ -1,69 +1,54 @@
-// Mock Song Data with Categories
+// Mock Song Data
 const songs = [
     {
         id: "1",
-        title: "Never Gonna Give You Up (Test)",
+        title: "Never Gonna Give You Up",
         artist: "Rick Astley",
         category: "pop",
-        thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/mqdefault.jpg",
-        videoId: "dQw4w9WgXcQ" // YouTube Video ID
+        thumbnail: "thumbnail/1.jpg",
+        videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4" // Direct MP4 video URL
     },
     {
         id: "2",
-        title: "Despacito (Test)",
+        title: "Despacito",
         artist: "Luis Fonsi",
         category: "latin",
-        thumbnail: "https://img.youtube.com/vi/kJQP7kiw5Fk/mqdefault.jpg",
-        videoId: "kJQP7kiw5Fk"
+        thumbnail: "thumbnail/2.jpg",
+        videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4"
     },
     {
         id: "3",
-        title: "Bohemian Rhapsody (Test)",
+        title: "Bohemian Rhapsody",
         artist: "Queen",
         category: "90s",
-        thumbnail: "https://img.youtube.com/vi/fJ9rUzIMcZQ/mqdefault.jpg",
-        videoId: "fJ9rUzIMcZQ"
+        thumbnail: "thumbnail/3.jpg",
+        videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4"
     },
     {
         id: "4",
-        title: "Hello (Test)",
+        title: "Hello",
         artist: "Adele",
         category: "2000s",
-        thumbnail: "https://img.youtube.com/vi/YQHsXMglC9A/mqdefault.jpg",
-        videoId: "YQHsXMglC9A"
+        thumbnail: "thumbnail/4.jpg",
+        videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4"
     },
     {
         id: "5",
-        title: "Roar (Test)",
+        title: "Roar",
         artist: "Katy Perry",
         category: "pop",
-        thumbnail: "https://img.youtube.com/vi/CevxZvSJLk8/mqdefault.jpg",
-        videoId: "CevxZvSJLk8"
+        thumbnail: "thumbnail/5.jpg",
+        videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4"
     },
     {
         id: "6",
-        title: "Sugar (Test)",
+        title: "Sugar",
         artist: "Maroon 5",
         category: "pop",
-        thumbnail: "https://img.youtube.com/vi/09R8_2nJtjg/mqdefault.jpg",
-        videoId: "09R8_2nJtjg"
+        thumbnail: "thumbnail/6.jpg",
+        videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4"
     },
-    {
-        id: "7",
-        title: "See You Again (Test)",
-        artist: "Wiz Khalifa",
-        category: "hiphop",
-        thumbnail: "https://img.youtube.com/vi/RgKAFK5djSk/mqdefault.jpg",
-        videoId: "RgKAFK5djSk"
-    },
-    {
-        id: "8",
-        title: "Blank Space (Test)",
-        artist: "Taylor Swift",
-        category: "pop",
-        thumbnail: "https://img.youtube.com/vi/e-ORhEE9VVg/mqdefault.jpg",
-        videoId: "e-ORhEE9VVg"
-    }
+
 ];
 
 // DOM Elements
@@ -82,9 +67,9 @@ let currentCategory = 'all';
 // Function to render song list
 function renderSongs(songsToRender) {
     songGrid.innerHTML = '';
-    
+
     if (songsToRender.length === 0) {
-        songGrid.innerHTML = '<p style="grid-column: 1 / -1; text-align: center; color: var(--text-secondary); font-size: 1.2rem; margin-top: 2rem;">ไม่พบเพลงในหมวดหมู่นี้ หรือ ไม่พบชื่อเพลงที่ค้นหา</p>';
+        songGrid.innerHTML = '<p style="grid-column: 1 / -1; text-align: center; color: var(--text-secondary);">ไม่พบเพลงที่ค้นหา</p>';
         return;
     }
 
@@ -106,21 +91,23 @@ function renderSongs(songsToRender) {
 
 // Function to handle playing a song
 function playSong(song) {
+    // Update player info
     nowPlayingTitle.textContent = song.title;
     nowPlayingArtist.textContent = song.artist;
 
+    // Use <video> tag instead of YouTube iframe
     videoWrapper.innerHTML = `
-        <iframe 
-            src="https://www.youtube.com/embed/${song.videoId}?autoplay=1&rel=0" 
-            title="YouTube video player" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-            allowfullscreen>
-        </iframe>
+        <video controls autoplay style="width: 100%; height: 100%; border: none; background: #000; outline: none;">
+            <source src="${song.videoUrl}" type="video/mp4">
+            เบราว์เซอร์ของคุณไม่รองรับการเล่นวีดีโอ
+        </video>
     `;
 
+    // Switch views
     listView.classList.remove('active');
     listView.classList.add('hidden');
-    
+
+    // Small delay to allow CSS transition
     setTimeout(() => {
         playerView.classList.remove('hidden');
         playerView.classList.add('active');
@@ -129,11 +116,14 @@ function playSong(song) {
 
 // Function to handle returning to list
 function backToList() {
+    // Stop video by clearing wrapper
     videoWrapper.innerHTML = '';
 
+    // Switch views
     playerView.classList.remove('active');
     playerView.classList.add('hidden');
-    
+
+    // Small delay to allow CSS transition
     setTimeout(() => {
         listView.classList.remove('hidden');
         listView.classList.add('active');
@@ -143,15 +133,15 @@ function backToList() {
 // Function to filter and render
 function filterAndRender() {
     const searchTerm = searchInput.value.toLowerCase();
-    
+
     const filteredSongs = songs.filter(song => {
-        const matchSearch = song.title.toLowerCase().includes(searchTerm) || 
-                            song.artist.toLowerCase().includes(searchTerm);
+        const matchSearch = song.title.toLowerCase().includes(searchTerm) ||
+            song.artist.toLowerCase().includes(searchTerm);
         const matchCategory = currentCategory === 'all' || song.category === currentCategory;
-        
+
         return matchSearch && matchCategory;
     });
-    
+
     renderSongs(filteredSongs);
 }
 
@@ -162,11 +152,11 @@ categoryBtns.forEach(btn => {
     btn.addEventListener('click', (e) => {
         // Remove active class from all buttons
         categoryBtns.forEach(b => b.classList.remove('active'));
-        
+
         // Add active class to clicked button
         const clickedBtn = e.currentTarget;
         clickedBtn.classList.add('active');
-        
+
         // Update category and re-render
         currentCategory = clickedBtn.dataset.category;
         filterAndRender();

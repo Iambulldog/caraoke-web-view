@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Caraoke - Web Karaoke</title>
+    <title>คาราโอเกะ - Karaoke</title>
     <!-- Use Inter for modern UI, Prompt for Thai text -->
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Prompt:wght@300;400;600&display=swap"
@@ -19,37 +19,37 @@
     <div class="bg-orb orb-3"></div>
 
     <div id="app" class="app-layout">
-        
+
         <!-- Sidebar Navigation -->
         <aside class="sidebar">
             <div class="sidebar-header">
                 <h1 class="logo">คารา<span class="text-gradient">โอเกะ</span></h1>
             </div>
-            
+
             <div class="sidebar-menu">
                 <h3 class="menu-title">หมวดหมู่เพลง</h3>
                 <ul class="category-list">
                     <li><button class="category-btn active" data-category="all">
-                        <span class="cat-icon">🎵</span> ทั้งหมด (All)
-                    </button></li>
+                            <span class="cat-icon">🎵</span> ทั้งหมด (All)
+                        </button></li>
                     <li><button class="category-btn" data-category="pop">
-                        <span class="cat-icon">🎤</span> ป๊อป (Pop)
-                    </button></li>
+                            <span class="cat-icon">🎤</span> ป๊อป (Pop)
+                        </button></li>
                     <li><button class="category-btn" data-category="rock">
-                        <span class="cat-icon">🎸</span> ร็อก (Rock)
-                    </button></li>
+                            <span class="cat-icon">🎸</span> ร็อก (Rock)
+                        </button></li>
                     <li><button class="category-btn" data-category="hiphop">
-                        <span class="cat-icon">🎧</span> ฮิปฮอป (Hip-Hop)
-                    </button></li>
+                            <span class="cat-icon">🎧</span> ฮิปฮอป (Hip-Hop)
+                        </button></li>
                     <li><button class="category-btn" data-category="latin">
-                        <span class="cat-icon">💃</span> ลาติน (Latin)
-                    </button></li>
+                            <span class="cat-icon">💃</span> ลาติน (Latin)
+                        </button></li>
                     <li><button class="category-btn" data-category="90s">
-                        <span class="cat-icon">📼</span> ยุค 90s
-                    </button></li>
+                            <span class="cat-icon">📼</span> ยุค 90s
+                        </button></li>
                     <li><button class="category-btn" data-category="2000s">
-                        <span class="cat-icon">💿</span> ยุค 2000s
-                    </button></li>
+                            <span class="cat-icon">💿</span> ยุค 2000s
+                        </button></li>
                 </ul>
             </div>
         </aside>
@@ -81,6 +81,10 @@
                         <!-- Song cards will be generated here by JS -->
                     </div>
                 </section>
+
+                <footer class="app-footer">
+                    <p>&copy; 2026 Caraoke Web App.</p>
+                </footer>
             </main>
 
             <!-- View 2: Video Player -->
@@ -88,8 +92,9 @@
                 <header class="player-header">
                     <button id="back-btn" class="btn-back">
                         <span class="btn-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
                                 <path d="M19 12H5M12 19l-7-7 7-7" />
                             </svg>
                         </span>
@@ -107,6 +112,9 @@
                         <!-- YouTube iframe or video tag will be inserted here -->
                     </div>
                 </section>
+                <footer class="player-footer">
+                    <p>สนุกกับการร้องเพลง 🎤 Caraoke System</p>
+                </footer>
             </main>
         </div>
     </div>
