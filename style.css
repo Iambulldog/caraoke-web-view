@@ -176,7 +176,7 @@ body {
 .main-content {
     flex: 1;
     position: relative;
-    padding: 3rem 4rem;
+    padding: 3rem 4rem 100px 4rem; /* Added extra bottom padding for fixed footer */
     min-height: 100vh;
 }
 
@@ -208,9 +208,18 @@ body {
 /* Header & Search */
 .app-header {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    margin-bottom: 3rem;
+    margin-top: 25vh; /* Center vertically */
+    margin-bottom: 4rem;
+    gap: 1.5rem;
+    text-align: center;
+    transition: margin-top 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.app-header.searched {
+    margin-top: 0;
 }
 
 .subtitle {
@@ -450,7 +459,10 @@ body {
 
 /* Footer */
 .app-footer {
-    margin-top: 5rem;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    margin-bottom: 4rem;
     padding-top: 2rem;
     padding-bottom: 2rem;
     border-top: 1px solid var(--glass-border);
@@ -627,8 +639,6 @@ body {
     }
 
     .app-header {
-        flex-direction: column;
-        align-items: flex-start;
         gap: 1.5rem;
     }
 
@@ -667,6 +677,9 @@ body {
     color: var(--text-secondary);
     font-size: 0.9rem;
     padding-top: 2rem;
+    margin-top: auto;
+    letter-spacing: 1px;
+}em;
     margin-top: auto;
     letter-spacing: 1px;
 }

@@ -61,16 +61,14 @@ const backBtn = document.getElementById('back-btn');
 const nowPlayingTitle = document.getElementById('now-playing-title');
 const nowPlayingArtist = document.getElementById('now-playing-artist');
 const videoWrapper = document.getElementById('video-wrapper');
-const categoryBtns = document.querySelectorAll('.category-btn');
-
-let currentCategory = 'all';
+const sectionTitle = document.getElementById('section-title');
 
 // Function to render song list
 function renderSongs(songsToRender) {
     songGrid.innerHTML = '';
 
     if (songsToRender.length === 0) {
-        songGrid.innerHTML = '<p style="grid-column: 1 / -1; text-align: center; color: var(--text-secondary);">ไม่พบเพลงที่ค้นหา</p>';
+        songGrid.innerHTML = '<p style="grid-column: 1 / -1; text-align: center; color: var(--text-secondary);">พิมพ์ชื่อเพลงหรือศิลปินเพื่อค้นหา</p>';
         return;
     }
 
@@ -143,38 +141,34 @@ function backToList() {
 
 // Function to filter and render
 function filterAndRender() {
-    const searchTerm = searchInput.value.toLowerCase();
+    const searchTerm = searchInput.value.toLowerCase().trim();
+    const appHeader = document.querySelector('.app-header');
+
+    if (searchTerm === '') {
+        songGrid.innerHTML = '';
+        if (sectionTitle) sectionTitle.style.display = 'none';
+        if (appHeader) appHeader.classList.remove('searched');
+        return;
+    }
+
+    if (sectionTitle) sectionTitle.style.display = 'block';
+    if (appHeader) appHeader.classList.add('searched');
 
     const filteredSongs = songs.filter(song => {
-        const matchSearch = song.title.toLowerCase().includes(searchTerm) ||
+        return song.title.toLowerCase().includes(searchTerm) ||
             song.artist.toLowerCase().includes(searchTerm);
-        const matchCategory = currentCategory === 'all' || song.category === currentCategory;
-
-        return matchSearch && matchCategory;
     });
 
-    renderSongs(filteredSongs);
+    if (filteredSongs.length === 0) {
+        songGrid.innerHTML = '<p style="grid-column: 1 / -1; text-align: center; color: var(--text-secondary);">ไม่พบเพลงที่ค้นหา</p>';
+    } else {
+        renderSongs(filteredSongs);
+    }
 }
 
 // Event Listeners
 searchInput.addEventListener('input', filterAndRender);
-
-categoryBtns.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-        // Remove active class from all buttons
-        categoryBtns.forEach(b => b.classList.remove('active'));
-
-        // Add active class to clicked button
-        const clickedBtn = e.currentTarget;
-        clickedBtn.classList.add('active');
-
-        // Update category and re-render
-        currentCategory = clickedBtn.dataset.category;
-        filterAndRender();
-    });
-});
-
 backBtn.addEventListener('click', backToList);
 
-// Initial Render
-renderSongs(songs);
+// Initial Render (Empty state)
+filterAndRender();
