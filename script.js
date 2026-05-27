@@ -112,6 +112,16 @@ function playSong(song) {
     setTimeout(() => {
         playerView.classList.remove('hidden');
         playerView.classList.add('active');
+        
+        // Request fullscreen on the video element
+        const video = videoWrapper.querySelector('video');
+        if (video) {
+            if (video.requestFullscreen) {
+                video.requestFullscreen().catch(err => console.log("Fullscreen Error:", err));
+            } else if (video.webkitRequestFullscreen) {
+                video.webkitRequestFullscreen().catch(err => console.log("Fullscreen Error:", err));
+            }
+        }
     }, 50);
 }
 
