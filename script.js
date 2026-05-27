@@ -2,50 +2,50 @@
 const songs = [
     {
         id: "1",
-        title: "Never Gonna Give You Up",
-        artist: "Rick Astley",
+        title: "ซ่อนกลิ่น",
+        artist: "ปาล์มมี่",
         category: "pop",
-        thumbnail: "thumbnail/1.jpg",
-        videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4" // Direct MP4 video URL
+        thumbnail: "thumbnail/1.png",
+        videoUrl: "video1.mp4" // Direct MP4 video URL
     },
     {
         id: "2",
-        title: "Despacito",
-        artist: "Luis Fonsi",
-        category: "latin",
-        thumbnail: "thumbnail/2.jpg",
+        title: "ซ่อน(ไม่)หา",
+        artist: "เจฟ ชาเตอร์",
+        category: "pop",
+        thumbnail: "thumbnail/2.png",
         videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4"
     },
     {
         id: "3",
-        title: "Bohemian Rhapsody",
-        artist: "Queen",
-        category: "90s",
-        thumbnail: "thumbnail/3.jpg",
+        title: "รักแรก",
+        artist: "นนท์ ธนนท์",
+        category: "pop",
+        thumbnail: "thumbnail/3.png",
         videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4"
     },
     {
         id: "4",
-        title: "Hello",
-        artist: "Adele",
-        category: "2000s",
-        thumbnail: "thumbnail/4.jpg",
+        title: "วาดไว้",
+        artist: "โบกี้ไลอ้อน",
+        category: "pop",
+        thumbnail: "thumbnail/4.png",
         videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4"
     },
     {
         id: "5",
-        title: "Roar",
-        artist: "Katy Perry",
+        title: "จังหวะตกหลุมรัก",
+        artist: "ดีดี ดาด้า",
         category: "pop",
-        thumbnail: "thumbnail/5.jpg",
+        thumbnail: "thumbnail/5.png",
         videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4"
     },
     {
         id: "6",
-        title: "Sugar",
-        artist: "Maroon 5",
-        category: "pop",
-        thumbnail: "thumbnail/6.jpg",
+        title: "ถ้าเธอรักฉันจริง",
+        artist: "ทรี แมนดาวน์",
+        category: "rock",
+        thumbnail: "thumbnail/6.png",
         videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4"
     },
 
