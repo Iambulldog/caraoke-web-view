@@ -1,14 +1,14 @@
 // Mock Song Data
 const songs = [
 
-    {
-        id: "1",
-        title: "ซ่อน(ไม่)หา",
-        artist: "เจฟ ชาเตอร์",
-        category: "pop",
-        thumbnail: "thumbnail/2.png",
-        videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4"
-    },
+    // {
+    //     id: "1",
+    //     title: "ซ่อน(ไม่)หา",
+    //     artist: "เจฟ ชาเตอร์",
+    //     category: "pop",
+    //     thumbnail: "thumbnail/2.png",
+    //     videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4"
+    // },
     {
         id: "2",
         title: "รักแรก",
@@ -168,6 +168,22 @@ function filterAndRender() {
 
 // Event Listeners
 searchInput.addEventListener('input', filterAndRender);
+searchInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+        const searchTerm = searchInput.value.toLowerCase().trim();
+        if (searchTerm === '') return;
+        
+        const filteredSongs = songs.filter(song => {
+            return song.title.toLowerCase().includes(searchTerm) ||
+                song.artist.toLowerCase().includes(searchTerm);
+        });
+
+        if (filteredSongs.length === 1) {
+            playSong(filteredSongs[0]);
+            searchInput.blur();
+        }
+    }
+});
 backBtn.addEventListener('click', backToList);
 
 // Initial Render (Empty state)
